@@ -59,7 +59,7 @@ public class UserPosDAO {
 		
 	}
 		
-		public Userposjava buscar (int id) throws Exception { //metodo buscar nao retorna em uma lista
+		public Userposjava buscarObjeto (int id) throws Exception { //metodo buscar nao retorna em uma lista
 			Userposjava retorno = new Userposjava(); //instancia a lista para nao dar null interception, e retorna
 			//lá embaixo com return list; pra retornar com algum resultado ou retornar vazia
 			
