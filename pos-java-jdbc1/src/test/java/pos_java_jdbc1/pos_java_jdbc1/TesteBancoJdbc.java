@@ -1,14 +1,18 @@
 package pos_java_jdbc1.pos_java_jdbc1;
 
+import java.beans.Statement;
 import java.sql.PreparedStatement;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
+import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.base64.Base64Encoder;
 
 import conexaojdbc.SingleConnection;
 import dao.UserPosDAO;
+import model.BeanUserFone;
+import model.Telefone;
 import model.Userposjava;
 
 public class TesteBancoJdbc {
@@ -45,7 +49,7 @@ public class TesteBancoJdbc {
 	}
 	
 
-	@Test
+	/* @Test
 	public void initBuscar () {
 		
 		UserPosDAO dao = new UserPosDAO();
@@ -59,7 +63,7 @@ public class TesteBancoJdbc {
 			
 			e.printStackTrace();
 		}
-	}
+	} */
 	
 	/* @Test
 	public void initAtualizar () {
@@ -94,6 +98,40 @@ public class TesteBancoJdbc {
 		}
 		
 		System.out.println(LOGGER);
+	}
+	
+	public void testeInsertTelefone () {
+		
+		Telefone telefone = new Telefone();
+		telefone.setNumero("(11) 93554557");
+		telefone.setTipo("Casa");
+		telefone.setUsuarioPessoa(5);
+		
+		UserPosDAO dao = new UserPosDAO();
+		dao.salvarTelefone(telefone);
+		
+		
+	}
+	
+	
+	public void testeCarregaFonesUser () {
+		
+		UserPosDAO dao = new UserPosDAO();
+		
+		List<BeanUserFone> beanUserFones = dao.listaUserFone(12L);
+		
+		for (BeanUserFone beanUserFone : beanUserFones) {
+			System.out.println(beanUserFone);
+			System.out.println("---------------------------------");
+			
+		}
+	}
+	
+	public void testeDeleteUserFone () {
+		
+		UserPosDAO dao = new UserPosDAO();
+		dao.deleteFonesPorUser(3L);
+		
 	}
 
 }
